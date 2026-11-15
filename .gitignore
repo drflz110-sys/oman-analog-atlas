@@ -1,5 +1,7 @@
 # secrets and local env
 .env
+*.env
+.deploy.env
 *.pem
 *.key
 # raw downloads stay out of the repo (multi-GB)
