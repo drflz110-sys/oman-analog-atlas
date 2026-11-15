@@ -3,6 +3,8 @@
 NASA Space Apps Challenge 2026 · *Identify Earth Locations that Analog the Permanent Moon Base Locations and Mars*
 Team: Luqman Alsaqri (lead, drone LiDAR) · Adil Alkalbani (GIS, AHP) · Mazin Albahri (code, web, VR, security)
 
+**Live site: https://ubar.space** · **30-second demo video:** https://drflz110-sys.github.io/oman-analog-atlas/media/ubar-demo-30s.mp4 (also at https://ubar.space/media/ubar-demo-30s.mp4) · **Slides:** https://ubar.space/present/
+
 Oman's terrain scored against Moon and Mars targets with an **Analog Similarity Index (ASI = Σ wᵢ·sᵢ)**,
 presented as a space-navigation interface: **Orbit → Director → Oman destination map → Analog Passport → Twin Lens**.
 
