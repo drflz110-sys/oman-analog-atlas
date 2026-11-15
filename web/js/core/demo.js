@@ -25,9 +25,11 @@ export function startDemo({ go, store }) {
       run: async () => { await click('#strata [data-l="asi"]'); go("#site-S05"); } },
     { t: 12, title: "The site in 3D", say: "Real terrain and satellite imagery. The blue box is the area our team surveyed with a drone; the gold square is the one-kilometre area the score describes.",
       run: async () => click("#site3dBtn", 8000) },
-    { t: 12, title: "4 · Meet the twin", say: "Destinations puts the real Mars terrain beside its Oman twin, at the same 24-kilometre size and height scale, so anyone can see why they match.",
+    { t: 11, title: "4 · Meet the analog", say: "Destinations puts the real Mars terrain beside its Oman analog at the same 24-kilometre size and height scale. Jezero's floor, where Perseverance landed, is 90% alike to Mizayra at the edge of the Wahiba Sands.",
       run: async () => { if (document.querySelector(".atlas.in3d")) { $("#site3dBtn")?.click(); await wait(600); }
         go("#destination-mars_jezero_delta"); await click('#dSeg [data-k="both"]', 12000); await wait(300); $(".dstage")?.scrollIntoView({ behavior: "smooth", block: "center" }); } },
+    { t: 10, title: "Honest about the Moon", say: "Shackleton crater at the lunar south pole has walls 4 kilometres deep. Oman can't copy that: the best match is only 32% alike, and the site says so.",
+      run: async () => { go("#destination-moon_shackleton"); await until(() => $('.dcardb[aria-pressed="true"]')?.dataset.id === "moon_shackleton", 12000); await click('#dSeg [data-k="both"]', 12000); await wait(300); $(".dstage")?.scrollIntoView({ behavior: "smooth", block: "center" }); } },
     { t: 11, title: "5 · Live the mission in VR", say: "In a Meta Quest you live the whole mission: the briefing at this holo-table, your suit, the journey, orbit, landing, and the base built step by step, with a narrator.",
       run: async () => go("#vr") },
     { t: 7, title: "UBAR", say: "Open NASA data turning Oman into a rehearsal ground for the Moon and Mars.",
