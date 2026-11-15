@@ -12,7 +12,7 @@ S05 is a civilian survey site. Its location is already shown on [ubar.space](htt
 | Drone | DJI Matrice 4 series, M4T camera (wide lens) |
 | Plan | Area route of 860.8 × 544.6 m (0.47 km²), ortho + "smart oblique" collection, gimbal up to 45° |
 | Ground resolution (planned) | 4.27 cm/pixel ortho, 6.04 cm/pixel oblique |
-| Photos | 1,642 camera triggers logged (the plan estimated 1,423) |
+| Photos | **1,634 photos of the area** taken by the drone (the photo log records 1,642 camera triggers; the plan estimated 1,423) |
 | Positions | All 1,642 photos lie within 15–661 m of the S05 centre (22.5983° N, 58.3542° E), ellipsoid height 552–555 m |
 
 ## Files
