@@ -35,6 +35,7 @@ const ROWS = [
   ["Oman Drilling Project (ICDP)", "ICDP / IODP", "https://publications.iodp.org/other/Oman/OmanDP.html", "Benchmark outcrops (BT1B, BA1, IGSN surface sample) for validation; hole CM1 centres the VR Oman terrain", "Validation · VR terrain", false],
   ["Team drone LiDAR survey", "UBAR team", "#vr", "Bare-earth terrain of the civilian survey site; replaces the satellite terrain in VR once processed", "VR terrain", false],
   ["Piper text-to-speech · voice en_GB-cori-high", "Open source (MIT) · public-domain voice (LibriVox)", "https://github.com/rhasspy/piper", "The VR narrator: every line pre-recorded with a neural voice", "VR narration", false],
+  ["Piper voice en_US-ryan-high (RyanSpeech dataset)", "CC BY-NC-SA 4.0", "https://huggingface.co/rhasspy/piper-voices", "Male AI-generated voiceover of the 30-second demo video", "Demo video", false],
     ["three.js", "Open source (MIT licence)", "https://threejs.org/", "3D engine and bloom effect; globe cloud texture from its example files", "Visuals", false],
   ["Rajendran & Nasir (2015), Tectonophysics 657", "Sultan Qaboos University", "https://doi.org/10.1016/j.tecto.2015.06.023", "Background geology and alteration mapping of the Samail ophiolite", "Context", false],
 ];
