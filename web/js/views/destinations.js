@@ -63,7 +63,7 @@ const PAL = {
 };
 export const slopeWords = d => d < 2 ? "flat as a car park" : d < 5 ? "a gentle ramp" : d < 10 ? "a steep driveway" : d < 20 ? "a steep hiking trail" : "a scramble: hands needed in places";
 export const reliefWords = r => r < 20 ? "a flat plain" : r < 60 ? "low, rolling ground" : r < 150 ? "hilly country" : r < 400 ? "mountain slopes" : "a huge crater wall / massif";
-const verdict = sim => sim >= 0.8 ? ["v-good", "Strong terrain twin"] : sim >= 0.5 ? ["v-mid", "Partial twin"] : ["v-bad", "Weak twin: Oman has nothing this extreme"];
+const verdict = sim => sim >= 0.8 ? ["v-good", "Strong terrain analog"] : sim >= 0.5 ? ["v-mid", "Partial analog"] : ["v-bad", "Weak analog: Oman has nothing this extreme"];
 const pill = ok => ok === 2 ? `<span class="pill p-good">✓ same feel</span>` : ok === 1 ? `<span class="pill p-mid">~ close</span>` : `<span class="pill p-bad">✗ different</span>`;
 const cls = (a, b, f) => f(a) === f(b) ? 2 : Math.abs(Math.log((a + 0.5) / (b + 0.5))) < 0.6 ? 1 : 0;
 const shortName = t => t.name.split(" – ")[0].replace(/ \(.*\)/, "");
@@ -113,8 +113,8 @@ export default {
     root.innerHTML = `<div class="page-inner">
       <div class="page-head"><p class="eyebrow">Destinations</p>
         <h1>Where are the astronauts going, and where in Oman can they rehearse it?</h1>
-        <p>Before anyone walks on the Moon or Mars, crews practise on Earth in places that look and behave like their destination. Pick a real landing site below. You will see it in 3D from real NASA elevation data, stand on it, and then meet its closest twin in Oman, with a plain explanation of what the two have in common and what Earth can never copy.</p>
-        <div class="steps"><span><b>1</b> Pick a destination</span><span><b>2</b> See it &amp; stand on it</span><span><b>3</b> Meet its Oman twin</span><span><b>4</b> Why it is (or isn't) a good rehearsal</span></div></div>
+        <p>Before anyone walks on the Moon or Mars, crews practise on Earth in places that look and behave like their destination. Pick a real landing site below. You will see it in 3D from real NASA elevation data, stand on it, and then meet its closest analog in Oman, with a plain explanation of what the two have in common and what Earth can never copy.</p>
+        <div class="steps"><span><b>1</b> Pick a destination</span><span><b>2</b> See it &amp; stand on it</span><span><b>3</b> Meet its Oman analog</span><span><b>4</b> Why it is (or isn't) a good rehearsal</span></div></div>
       <div class="picker" id="dPicker" aria-label="Destinations"></div>
       <div class="dstage">
         <div><div class="viewer" id="dViewer">
@@ -127,7 +127,7 @@ export default {
       <section class="twin" id="dTwin"></section>
       <footer class="dfoot">
         <p><b>What is real and what is illustration.</b> Terrain shapes are real: Moon from NASA's Lunar Reconnaissance Orbiter laser altimeter (LOLA, 80 m), Mars from Mars Global Surveyor (MOLA, 463 m: smooth, it shows landforms but not boulders), Oman from the Copernicus 90 m elevation model. Every 3D tile is exactly 24 × 13.5 km, so sizes compare directly. The "Stand there" horizon is computed from the same elevation data; sky colour, rocks and lighting are illustrated. Moon target positions are approximate feature centres; Mars positions are published landing / candidate sites.</p>
-        <p>Twins are chosen by terrain (slope, bumpiness, hilliness compared at the same scale). Oman scores come from the team's full 10-criterion analysis (90 m). NASA Space Apps 2026 · Oman Analog Atlas team.</p>
+        <p>Analogs are chosen by terrain (slope, bumpiness, hilliness compared at the same scale). Oman scores come from the team's full 10-criterion analysis (90 m). NASA Space Apps 2026 · Oman Analog Atlas team.</p>
       </footer></div>`;
     const $ = s => root.querySelector(s);
 
@@ -197,7 +197,7 @@ export default {
       const both = view3.show === "both"; let top = 0;
       meshes.forEach(m => { m.geometry.computeBoundingBox(); top = Math.max(top, m.geometry.boundingBox.max.y); });
       camera.position.set(0, top + (both ? 20 : 11), both ? 30 : 20); controls.target.set(0, top * 0.35, 0); controls.update();
-      $("#capL").textContent = both ? `◀ ${t.body}: ${shortName(t)}` : view3.show === "twin" ? `Oman twin: ${tw.name}` : `${t.body}: ${t.name}`;
+      $("#capL").textContent = both ? `◀ ${t.body}: ${shortName(t)}` : view3.show === "twin" ? `Oman analog: ${tw.name}` : `${t.body}: ${t.name}`;
       $("#capR").textContent = both ? `Oman: ${tw.name} ▶` : `Tile 24 × 13.5 km · heights ×${view3.exag}`;
     }
 
@@ -290,7 +290,7 @@ export default {
       el.onclick = e => { const b = e.target.closest("button"); if (b) on(b.dataset.k); };
     }
     function paintControls() {
-      segButtons($("#dSeg"), [["dest", "Destination"], ["twin", "Oman twin"], ["both", "Side by side"]], view3.show, k => { view3.show = k; if (k === "both" && view3.mode === "ground") view3.mode = "3d"; paintControls(); render(); });
+      segButtons($("#dSeg"), [["dest", "Destination"], ["twin", "Oman analog"], ["both", "Side by side"]], view3.show, k => { view3.show = k; if (k === "both" && view3.mode === "ground") view3.mode = "3d"; paintControls(); render(); });
       segButtons($("#dMode"), [["3d", "3D from above"], ["ground", "Stand there"], ["x1", "Real heights"], ["x2", "Heights ×2"]], view3.mode,
         k => { if (k === "x1") view3.exag = 1; else if (k === "x2") view3.exag = 2; else { view3.mode = k; if (k === "ground" && view3.show === "both") view3.show = "dest"; } paintControls(); render(); });
       [...$("#dMode").children].forEach(b => { if (b.dataset.k === "x1") b.setAttribute("aria-pressed", view3.exag === 1); if (b.dataset.k === "x2") b.setAttribute("aria-pressed", view3.exag === 2); });
@@ -348,7 +348,7 @@ export default {
         `<div class="rc"><h3>Getting there ${pill(sc.s.access >= 0.8 ? 2 : 1)}</h3><p>${tw.km_bidiyah ? `${Math.round(tw.km_bidiyah)} km from Al Bidiyah (our hackathon base)` : ""}${sc.raw.access != null ? ` · ${sc.raw.access.toFixed(1)} km from the nearest road` : ""}. A rehearsal site must be reachable with vehicles, water and support.</p></div>`,
       ];
       const others = t.alts.filter(a => TWINS[a.id] && TWINS[a.id].hm).map(a => `<button type="button" data-alt="${a.id}">${esc(TWINS[a.id].name)}</button>`).join(" · ");
-      $("#dTwin").innerHTML = `<div class="twinhead"><div><div class="eyebrow">Its twin in Oman</div><h2>${esc(tw.name)}</h2>
+      $("#dTwin").innerHTML = `<div class="twinhead"><div><div class="eyebrow">Its analog in Oman</div><h2>${esc(tw.name)}</h2>
           <div class="alts">${esc(tw.place)} · ${tw.lat.toFixed(3)}° N, ${tw.lon.toFixed(3)}° E · overall analog score for this mission: <b>${Math.round(sc.asi * 100)}/100</b> (rank ${sc.rank} of 55) · <a href="#site-${tw.id}">open its passport</a>${others ? ` · other close matches: ${others}` : ""}</div></div>
           <div class="verdict ${vc}">${vt} · terrain ${Math.round(t.twin.sim * 100)}% alike</div></div>
         <div class="cards">${cards.join("")}</div>

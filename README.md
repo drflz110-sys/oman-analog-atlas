@@ -1,4 +1,4 @@
-# Oman Analog Atlas
+# UBAR · Oman Analog Atlas
 
 NASA Space Apps Challenge 2026 · *Identify Earth Locations that Analog the Permanent Moon Base Locations and Mars*
 Team: Luqman Alsaqri (lead, drone LiDAR) · Adil Alkalbani (GIS, AHP) · Mazin Albahri (code, web, VR, security)
@@ -6,7 +6,7 @@ Team: Luqman Alsaqri (lead, drone LiDAR) · Adil Alkalbani (GIS, AHP) · Mazin A
 **Live site: https://ubar.space** · **30-second demo video:** https://drflz110-sys.github.io/oman-analog-atlas/media/ubar-demo-30s.mp4 (also at https://ubar.space/media/ubar-demo-30s.mp4; narrated by Mazin) · **Slides:** https://ubar.space/present/
 
 Oman's terrain scored against Moon and Mars targets with an **Analog Similarity Index (ASI = Σ wᵢ·sᵢ)**,
-presented as a space-navigation interface: **Orbit → Director → Oman destination map → Analog Passport → Twin Lens**.
+presented as a space-navigation interface: **Orbit → Director → Oman destination map → Analog Passport → Destinations (real terrain side by side with its Oman analog)**.
 
 ## Run it locally
 
@@ -123,7 +123,7 @@ The real files are in place, so the "Mock data" flag is off. `web/data/mock/` (o
 | `sites.geojson` | 55 sites × 4 profiles = 220 points (`"mock": false`). Properties: `id, name, aoi, profile, asi, rank, benchmark (calibrate\|test\|null), tier, group[] (benchmark, drone_range, national_top), lat, lon, km_from_hackathon, emit_covered, s_<crit>, raw_<crit>, matches[], gaps[], best_use, validation_percentile` |
 | `weights.json` | `weights[profile][crit]` = AHP tier-2 weights (sum 1), plus `weights_tier1`, `groups`, `cr`, `method` |
 | `targets.csv` | `criterion, profile, body, site, value, tolerance, unit, source, rule` — `rule` is gaussian (slope, TRI, relief), one-sided (the others) or the EMIT class score |
-| `target_sites.json` | Moon / Mars terrain targets with their best Oman terrain twins (slope, TRI, relief, similarity) |
+| `target_sites.json` | Moon / Mars terrain targets with their best Oman terrain analogs (slope, TRI, relief, similarity) |
 | `grid/grid.json` + `pack_00…12.png` | 1 km Web-Mercator grids, 3 layers per RGB PNG: similarity `v/254`, distance `v/10` km, `255` = no data |
 | `twin/index.json` + `*.png` | 24 × 13.5 km height clips (Oman 90 m, LOLA 80 m, MOLA 463 m), RGB-packed 16-bit (`R·256 + G`) for the browser |
 
